@@ -6,6 +6,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileScreen = () => {
   return (
+    // creating a sign up page//
     <View style={styles.container}>
       <View style={styles.card}>
         <View style={styles.box1}>
@@ -66,7 +67,6 @@ const styles = StyleSheet.create({
   flex2: {
     justifyContent: "center",
     alignItems: "center",
-    
   },
   text: {
     fontSize: 24,
