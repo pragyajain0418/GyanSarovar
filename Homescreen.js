@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, Image, StyleSheet, Dimensions, ActivityIndicator, Button, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import {fonts} from '../GyanSarovar/assets/hindiFont.ttf';
 
 
 
@@ -14,6 +15,7 @@ const API_KEY = '6f102c62f41998d151e5a1b48713cf13';
 
 const HomeScreen = ({ navigation }) => {
   const [photos, setPhotos] = useState([]);
+
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [retry, setRetry] = useState(false);
@@ -21,6 +23,8 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     fetchPhotos(page);
   }, [page]);
+  
+  
 
   const fetchPhotos = async (page) => {
     setLoading(true);
@@ -67,11 +71,20 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      
+      <Text style={styles.Logotxt}>ज्ञानसरोवर</Text>  
+      <Text style={styles.subttle}>स्वाध्याय परम तप:</Text>  
+      {/* <View style={styles.profilecontainer}>
+        <TouchableOpacity>
+          <Text>Hello</Text>
+          </TouchableOpacity>
+      </View> */}
+      
       <FlatList
         data={photos}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        numColumns={3}
+        numColumns={4}
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
         ListFooterComponent={renderFooter}
@@ -88,11 +101,35 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   image: {
-    width: Dimensions.get('window').width / 3,
-    height: Dimensions.get('window').width / 3,
+    width: Dimensions.get('window').width / 4,
+    height: Dimensions.get('window').width / 4,
     margin: 1,
   },
+  Logotxt:{
+    color: 'purple',
+    marginTop:15,
+    fontSize: 30,
+    fontFamily: 'hindiFont',
+    
+  },
+  subttle :{
+    marginVertical:2,
+    
+    color: 'green',
+    fontSize: 15,
+    fontFamily: fonts,
+  },
+  inpt: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    width: '90%',
+    marginBottom: 10,
+    paddingLeft: 8,
+  },
+  
   
 });
 

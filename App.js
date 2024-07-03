@@ -3,6 +3,8 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import CustomDrawer from '../GyanSarovar/components/customDrawer';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 //import DrawerContent from './Drawercontent';
 
 import HomeScreen from "./Homescreen";
@@ -18,6 +20,7 @@ function MyTabs() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           backgroundColor: "#F0E68C", // Set the background color of the navigation bar
         },
@@ -38,19 +41,37 @@ function MyTabs() {
 function MyDrawer() {
   return (
     <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
-        headerStyle: {
-          backgroundColor: "#BA4A00", // Set the background color of the navigation bar
+        headerShown: true,
+        drawerActiveBackgroundColor: '#aa18ea',
+        drawerActiveTintColor: '#fff',
+        drawerInactiveTintColor: '#333',
+        drawerLabelStyle: {
+          marginLeft: -25,
+          fontFamily: 'Roboto-Medium',
+          fontSize: 15,
         },
-        headerTintColor: "#fff", // Set the color of the back button and title
-        headerTitleStyle: {
-          fontWeight: "bold", // Set the title style
-        },
-      }}
-      drawercontent={(props) => <DrawerContent {...props} />}
-    >
-      <Drawer.Screen name="Gallery" component={MyTabs} />
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
+      }}>
+      <Drawer.Screen
+        name="Home"
+        component={MyTabs}
+        options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="home-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="person-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      
     </Drawer.Navigator>
   );
 }

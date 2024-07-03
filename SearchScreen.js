@@ -35,6 +35,9 @@ const SearchScreen = () => {
 
   return (
     <View style={styles.container}>
+      
+      <Text style={styles.Logotext}>ज्ञानसरोवर</Text>  
+      <Text style={styles.subtitle}>स्वाध्याय परम तप:</Text>  
       <TextInput
         style={styles.input}
         placeholder="Search"
@@ -72,6 +75,16 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 3,
     height: Dimensions.get('window').width / 3,
     margin: 1,
+  },
+  Logotext:{
+    color: 'purple',
+    fontSize: 60,
+    fontFamily: 'hindiFont'
+  },
+  subtitle :{
+    color: 'green',
+    fontSize: 30,
+    fontFamily: 'hindiFont'
   },
 });
 
