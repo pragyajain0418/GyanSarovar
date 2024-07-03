@@ -72,14 +72,6 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       
-      <Text style={styles.Logotxt}>ज्ञानसरोवर</Text>  
-      <Text style={styles.subttle}>स्वाध्याय परम तप:</Text>  
-      {/* <View style={styles.profilecontainer}>
-        <TouchableOpacity>
-          <Text>Hello</Text>
-          </TouchableOpacity>
-      </View> */}
-      
       <FlatList
         data={photos}
         renderItem={renderItem}
@@ -109,14 +101,12 @@ const styles = StyleSheet.create({
   },
   Logotxt:{
     color: 'purple',
-    marginTop:15,
+    marginTop:10,
     fontSize: 30,
     fontFamily: 'hindiFont',
     
   },
   subttle :{
-    marginVertical:2,
-    
     color: 'green',
     fontSize: 15,
     fontFamily: fonts,

@@ -21,10 +21,10 @@ const CustomDrawer = props => {
         {...props}
         contentContainerStyle={{backgroundColor: '#8200d6'}}>
         <ImageBackground
-          source={require('/Users/a/Documents/GitHub/GyanSarovar/assets/bgpropfile.jpeg')}
+          source={require('../images/bgpropfile.jpeg')}
           style={{padding: 20}}>
           <Image
-            source={require('../assets/gamer.png')}
+            source={require('../images/gamer.png')}
             style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
           />
           <Text
@@ -34,7 +34,7 @@ const CustomDrawer = props => {
               //fontFamily: 'Roboto-Medium',
               marginBottom: 5,
             }}>
-            John Doe
+            Sanyam Jain
           </Text>
           <View style={{flexDirection: 'row'}}>
             <Text
