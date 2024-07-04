@@ -1,4 +1,4 @@
-// screens/SearchScreen.js
+// screens/SearchScreen
 
 import React, { useState } from "react";
 import {
