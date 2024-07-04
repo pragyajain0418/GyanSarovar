@@ -6,7 +6,6 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileScreen = () => {
   return (
-    
     <View style={styles.container}>
       <View style={styles.card}>
         <View style={styles.box1}>

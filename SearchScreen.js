@@ -1,11 +1,23 @@
 // screens/SearchScreen.js
-import React, { useState } from 'react';
-import { View, FlatList, Image, StyleSheet, Dimensions, TextInput, Button, ActivityIndicator, Text } from 'react-native';
 
-const FLICKR_SEARCH_API_URL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6f102c62f41998d151e5a1b48713cf13&format=json&nojsoncallback=1&extras=url_s&text=';
+import React, { useState } from "react";
+import {
+  View,
+  FlatList,
+  Image,
+  StyleSheet,
+  Dimensions,
+  TextInput,
+  Button,
+  ActivityIndicator,
+  Text,
+} from "react-native";
+
+const FLICKR_SEARCH_API_URL =
+  "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6f102c62f41998d151e5a1b48713cf13&format=json&nojsoncallback=1&extras=url_s&text=";
 
 const SearchScreen = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [retry, setRetry] = useState(false);
@@ -26,7 +38,15 @@ const SearchScreen = () => {
 
   const renderRetryButton = () => {
     if (!retry) return null;
-    return <Button title="Retry" onPress={() => { setRetry(false); fetchSearchResults(); }} />;
+    return (
+      <Button
+        title="Retry"
+        onPress={() => {
+          setRetry(false);
+          fetchSearchResults();
+        }}
+      />
+    );
   };
 
   const renderItem = ({ item }) => (
@@ -35,16 +55,17 @@ const SearchScreen = () => {
 
   return (
     <View style={styles.container}>
-      
-      <Text style={styles.Logotext}>ज्ञानसरोवर</Text>  
-      <Text style={styles.subtitle}>स्वाध्याय परम तप:</Text>  
+      <Text style={styles.Logotext}>ज्ञानसरोवर</Text>
+      <Text style={styles.subtitle}>स्वाध्याय परम तप:</Text>
+
       <TextInput
         style={styles.input}
-        placeholder="Search"
+        placeholder="Search...."
         value={query}
         onChangeText={setQuery}
         onSubmitEditing={fetchSearchResults}
       />
+
       {loading && <ActivityIndicator size="large" color="#0000ff" />}
       <FlatList
         data={photos}
@@ -60,31 +81,40 @@ const SearchScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F2F3F4",
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    width: '90%',
-    marginBottom: 10,
-    paddingLeft: 8,
+    height: 50,
+    borderColor: "gray",
+    shadowOffset: { width: -2, height: 4 },
+    shadowColor: "#171717",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    width: "80%",
+    marginTop: 20,
+    paddingLeft: 12,
+    borderRadius: 50,
+    fontSize: 18,
+    marginBottom: 15,
+    backgroundColor: "#fff",
+    color: "gray",
   },
   image: {
-    width: Dimensions.get('window').width / 3,
-    height: Dimensions.get('window').width / 3,
+    width: Dimensions.get("window").width / 3,
+    height: Dimensions.get("window").width / 3,
     margin: 1,
   },
-  Logotext:{
-    color: 'purple',
+  Logotext: {
+    color: "purple",
     fontSize: 60,
-    fontFamily: 'hindiFont'
+    fontFamily: "hindiFont",
   },
-  subtitle :{
-    color: 'green',
+  subtitle: {
+    color: "green",
     fontSize: 30,
-    fontFamily: 'hindiFont'
+    fontFamily: "hindiFont",
   },
 });
 
